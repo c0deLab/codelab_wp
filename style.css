@@ -31,24 +31,45 @@ License: GPL
 
 /************************* DEFAULT STYLES ***************************/
 body {margin: 10px 0 0 0; color:#222;background:#fff;font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif; font-size:62.5%; padding:0px;}
-.container-inner {width:950px; margin:0 auto;}
+
+.container-inner {
+	max-width: 950px; 
+	margin:0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 h1,h2,h3,h4,h5,h6 {color:#000;}
 a {color:#ff0000;text-decoration:none;}
 a:hover, a:focus {color:#FF0000; text-decoration: underline;}
-img {border:none;}
+
+img {
+	border:none;
+	height: auto;
+	max-width: 100%;
+}
 
 /************************* RSS ************************************/
 .feed {margin-left: 3px;padding: 0 0 0 19px;background: url("images/rss.png") no-repeat 0 50%;color:#000;}
 
 /************************* MASTHEAD ************************************/
-#navcontainer {margin-left: 0px; margin-bottom: 10px; margin-right: 0; margin-top: 10px; padding-left: 7px;font-family:"helvetica", Helvetica, Arial, sans-serif;text-align: right;background-color: #e1e1e1;height: 30px;}
-#navlist {height:30px}
+
+#navcontainer {
+	margin-left: 0px;
+	margin-bottom: 10px;
+	margin-right: 0;
+	margin-top: 10px;
+	padding-left: 7px;
+	font-family:"helvetica", Helvetica, Arial, sans-serif;
+	background-color: #e1e1e1;
+}
+
 #navcontainer p	{padding: 7px 7px 0px;font-size: 1.3em;font-weight: bold;}
 #navcontainer img {margin: 0;padding: 0;}
 ul#navlist { list-style: none;padding: 0;margin: 0px;font-size: 1.2em;}
-ul#navlist li {text-align: center;float: left;height: 30px;margin: 0;background: #e1e1e1;padding: 0;}
+ul#navlist li {text-align: center; display: inline-block; margin: 0;background: #e1e1e1;}
 ul#navlist li { width: 104px; voice-family: "\"}\""; voice-family:inherit;}
-ul#navlist li a {padding-bottom: 12px; padding-top: 10px; display: block;color: black;text-decoration: none;}
+ul#navlist li a {padding-bottom: 15px; padding-top: 10px; display: block;color: black;text-decoration: none;}
 #navcontainer>ul#navlist li a {width: auto;height: auto;height: 8px}
 ul#navlist li a:hover,ul#navlist li#active a:hover {background-color: #FF0000; color:#FFF}
 
@@ -95,8 +116,25 @@ img.avatar {
     width: 105px;
 }
 .person{
-	height: 110px;
-	padding-bottom: 25px;
+	height: auto;
+	
+	clear: both;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after { clear: both; }
+
+.person:before,
+.person:after {
+	content: " ";
+	display: table;
+}
+.person:after {
 	clear: both;
 }
 .person .bio{
@@ -112,15 +150,33 @@ img.avatar {
 
 /***************** THUMB DISPLAY **************/
 .imgteaser {
-	margin: 0 10px 7px 0;
+	margin: 0 2% 2% 0;
 	overflow: hidden;
 	float: left;
 	position: relative;
+	width: 49%;
 }
-.imgteaser a {
+
+.imgteaser:nth-child(2n) {
+	margin-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+	.imgteaser {
+		width: 100%;
+		margin-right: 0 !important;
+		margin-bottom: 15px;
+	}
+}
+
+.imgteaser__link {
+	padding-bottom: 60%;
 	text-decoration: none;
-	float: left;
+	display: block;
+	background-size: cover;
+	background-position: center center;
 }
+
 .imgteaser a:hover {
 	cursor: pointer;
 }
@@ -128,23 +184,24 @@ img.avatar {
 .imgteaser a .title {
 	position: absolute;
 	left: 0px;
+	box-sizing: border-box;
 	bottom: 0px;
 	font-size: 1.1em;
 	color: #fff;
 	background: #000;
 	padding: 5px 10px;
 	filter:alpha(opacity=65);
-	opacity:.65;
+	opacity: 0.65;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)"; /*--IE 8 Transparency--*/
-	width: 290px;
-	height: 18px;
+	width: 100%;
 }
 
 .imgteaser a:hover .excerpt{
 	display: block;
 	background: #111;
+	box-sizing: border-box;
 	filter:alpha(opacity=75);
-	opacity:.75;
+	opacity: 0.75;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; /*--IE 8 Transparency--*/
 	color: #fff;
 	position: absolute;
@@ -152,8 +209,9 @@ img.avatar {
 	left: 0px;
 	padding: 10px;
 	margin: 0px;
-	width: 290px;
-	height: 155px;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
 }
 .imgteaser a:hover .excerpt strong {
 	display: block;
@@ -204,4 +262,18 @@ h2.next, h3.next{
 #footer {
 	padding-top: 25px;
 	clear:both;
+}
+
+@media screen and (max-width: 1040px) {
+	#main {
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	#sidebar {
+		box-sizing: border-box;
+		padding: 0;
+		float: none;
+		width: 100%;
+	}
 }

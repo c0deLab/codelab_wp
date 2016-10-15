@@ -3,7 +3,8 @@
 <?php if (have_posts()) : ?>
 
 
-<h2>Recent Projects</h2>		
+<h2>Recent Projects</h2>
+<div class="clearfix">
 <?php 
 // PROJECTS
 $i = 0;
@@ -14,11 +15,11 @@ foreach ($posts as $post) : setup_postdata($post);
 	$i++;
 
 ?>
-<?php if ($i == 2) { ?><div class="archive-stack clear"></div><?php $i = 0; } ?>
 <?php endforeach; ?>
-<div class="clear"></div>
+</div>
 
-<h2>Recent Work In Progress</h2>		
+<h2>Recent Work In Progress</h2>
+<div class="clearfix">	
 <?php 
 // Work in progress
 $i = 0;
@@ -29,11 +30,11 @@ foreach ($posts as $post) : setup_postdata($post);
 	$i++;
 
 ?>
-<?php if ($i == 2) { ?><div class="archive-stack clear"></div><?php $i = 0; } ?>
 <?php endforeach; ?>
-<div class="clear"></div>
+</div>
 
 <h2 class="next">Recent News</h2>		
+<div class="clearfix">
 <?php 
 // NEWS
 $i = 0;
@@ -44,9 +45,8 @@ foreach ($posts as $post) : setup_postdata($post);
 	$i++;
 
 ?>
-<?php if ($i == 2) { ?><div class="archive-stack clear"></div><?php $i = 0; } ?>
 <?php endforeach; ?>
-<div class="clear"></div>
+</div>
 
 
 

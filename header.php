@@ -56,5 +56,15 @@
 	</div>
 </div>
 
+<!-- Sidebar -->
+<?php 
+	
+	// Don't show the sidebar with attachments
+	if (is_home() && !is_attachment()) {
+		include (TEMPLATEPATH . '/sidebar.php'); 
+	}
+	
+?>
+
 <!-- Main Column -->
 <div id="main">

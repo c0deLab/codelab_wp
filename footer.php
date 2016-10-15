@@ -6,7 +6,7 @@
 <?php 
 	
 	// Don't show the sidebar with attachments
-	if(!is_attachment()){
+	if(!is_home() && !is_attachment()){
 		include (TEMPLATEPATH . '/sidebar.php'); 
 	}
 	

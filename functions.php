@@ -14,23 +14,19 @@ add_filter('excerpt_length', 'new_excerpt_length');
 
 function get_thumbnail($i) {
 ?>
-<div class="span-8 post-<?php the_ID(); ?><?php if ($i == 3) { ?> last<?php  } ?>">
-	<div class="imgteaser">
-		<a href="<?php the_permalink() ?>">
-		
-			<img src="<?php get_the_post_thumbnail_url_changed('thumbnail'); ?>" alt="<?php the_title() ?>" />
-		
-			<span class="title"><?php the_title() ?></span>
-			<span class="excerpt">
-				<strong><?php the_title() ?></strong>
-				<?php 
-					// Remove the <p> tag so we can be compliant XHTML
-					$excerpt = strip_tags(get_the_excerpt());
-        			echo $excerpt;
-        		?>
-			</span>
-		</a>
-	</div>
+<div class="imgteaser">
+	<a href="<?php the_permalink(); ?>" style="background-image: url(<?php get_the_post_thumbnail_url_changed('thumbnail'); ?>)" class="imgteaser__link">
+	
+		<span class="title"><?php the_title(); ?></span>
+		<span class="excerpt">
+			<strong><?php the_title(); ?></strong>
+			<?php 
+				// Remove the <p> tag so we can be compliant XHTML
+				$excerpt = strip_tags(get_the_excerpt());
+      			echo $excerpt;
+      		?>
+		</span>
+	</a>
 </div>
 
 <?php
@@ -41,16 +37,9 @@ function get_thumbnail($i) {
 /* Get the url from the post thumbnail */
 function get_the_post_thumbnail_url_changed($size=thumbnail) {
 
-/*
-	$image = get_the_post_thumbnail( $post->ID, 'thumbnail' );
-	$start = strpos($image, 'src="') + 5;
-	$end = strpos($image, '" ', $start);
-	echo substr($image, $start, $end - $start);
-*/
-
 	// This is faster perhaps?
 	$thumbnail_id=get_the_post_thumbnail($post->ID, $size);
-	preg_match ('/src="(.*)" class/',$thumbnail_id,$link);
+	preg_match ('/src="(.*)" class/', $thumbnail_id, $link);
 	echo $link[1];
 	
 }
