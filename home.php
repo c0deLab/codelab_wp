@@ -2,9 +2,8 @@
 
 <?php if (have_posts()) : ?>
 
-
 <h2>Recent Projects</h2>
-<div class="clearfix">
+<div class="row">
 <?php 
 // PROJECTS
 $i = 0;
@@ -19,7 +18,7 @@ foreach ($posts as $post) : setup_postdata($post);
 </div>
 
 <h2>Recent Work In Progress</h2>
-<div class="clearfix">	
+<div class="row">	
 <?php 
 // Work in progress
 $i = 0;
@@ -34,7 +33,7 @@ foreach ($posts as $post) : setup_postdata($post);
 </div>
 
 <h2 class="next">Recent News</h2>		
-<div class="clearfix">
+<div class="row">
 <?php 
 // NEWS
 $i = 0;

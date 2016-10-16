@@ -1,0 +1,113 @@
+@import "settings";
+@import "foundation";
+@include foundation-everything;
+@import "overrides";
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+.menu {
+	@media screen and (max-width: map-get($breakpoints, large)) {
+		display: none;
+	}
+
+	@media screen and (min-width: map-get($breakpoints, large)) {
+		display: block !important;
+	}
+
+	li {
+		font-weight: bold;
+		text-transform: uppercase;
+
+		@media screen and (max-width: map-get($breakpoints, large)) {
+			&:first-child {
+				margin-top: 0.5em;
+			}
+		}
+	}
+
+	a {
+		transition: 0.2s;
+		&:active, &:hover {
+			background: map-get($foundation-palette, primary);
+			color: $white;
+		}
+	}
+}
+
+#main {
+	margin-top: 2.5%;
+}
+
+#sidebar {
+	margin-top: calc(2.5% + 60px);
+}
+
+img.centered{display: block;margin-left: auto;margin-right: auto;}
+img.alignright{padding: 4px;margin: 3px 0 2px 10px;display: inline;}
+img.alignleft{padding: 4px;margin: 3px 10px 2px 0;display: inline;}
+.alignleft{float: left;}
+.alignright{float: right;}
+.aligncenter,div.aligncenter {display: block;margin-left: auto;margin-right: auto;}
+.wp-caption {border: 1px solid #ddd;text-align: center;background-color: #f3f3f3;padding-top: 4px;margin: 10px;-moz-border-radius: 3px;-khtml-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;}
+.wp-caption img {margin: 0;padding: 0;border: 0 none;}
+.wp-caption p.wp-caption-text {font-size: 11px;line-height: 17px;padding: 0 4px 5px;margin: 0;}
+.thumbnail {width:310px;height:150px;background:#eee url('images/x.png') no-repeat center;max-width:310px;max-height:150px;overflow:hidden;}
+
+
+.imgteaser {
+	position: relative;
+}
+
+.imgteaser__link {
+	position: relative;
+	padding-bottom: 60%;
+	text-decoration: none;
+	display: block;
+	background-size: cover;
+	background-position: center center;
+	margin-bottom: 1em;
+}
+
+.imgteaser a .title {
+	font-weight: bold;
+	position: absolute;
+	left: 0px;
+	box-sizing: border-box;
+	bottom: 0px;
+	font-size: 1.1em;
+	color: #fff;
+	background: #000;
+	padding: 5px 10px;
+	opacity: 0.65;
+	width: 100%;
+}
+
+.imgteaser a:hover .excerpt{
+	display: block;
+	background: #111;
+	box-sizing: border-box;
+	opacity: 0.75;
+	color: #fff;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 10px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+.imgteaser a:hover .excerpt strong {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 1.1em;
+}
+
+.imgteaser a .excerpt {	display: none; }
+.imgteaser a:hover .title { visibility: hidden;}
+
+#footer {
+	margin-bottom: 1em;
+}

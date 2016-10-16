@@ -118,24 +118,29 @@ Template Name: People
 			endforeach; // end the users loop.
 
 			
-			function showBio($author) {
-				echo "<div class=\"person\">\n";
-				echo get_avatar( $author->ID , 80 );
-				echo "<div class=\"bio\">\n";
-				
-				// Only link to the author page if they have posts
-				$postCount = count_user_posts($author->ID);
-				if($postCount > 0) {
-					echo "<h4><a href=\"" . get_author_link(false, $author->ID, $author->user_nicename) . "\">" . $author->first_name . ' ' . $author->last_name . "</a></h4>\n";
-				} else {
-					echo "<h4>" . $author->first_name . ' ' . $author->last_name . "</h4>\n";
-				}
-				if($author->user_url != "") {
-					echo "<a href=\"" . $author->user_url . "\" target=\"_blank\">" . $author->user_url . "</a><br />\n";
-				}
-				echo $author->description . "\n";
-				echo "</div>\n";
-				echo "</div>\n\n";
+			function showBio($author) { ?>
+				<div class="media-object">
+					<div class="row">
+						<div class="small-4 columns">
+							<?php echo get_avatar( $author->ID, 300 ); ?>
+						</div>
+						<div class="small-8 columns">
+						<?php
+						// Only link to the author page if they have posts
+						$postCount = count_user_posts($author->ID);
+						if($postCount > 0) {
+							echo "<h4><a href=\"" . get_author_link(false, $author->ID, $author->user_nicename) . "\">" . $author->first_name . ' ' . $author->last_name . "</a></h4>\n";
+						} else {
+							echo "<h4>" . $author->first_name . ' ' . $author->last_name . "</h4>\n";
+						}
+						if($author->user_url != "") {
+							echo "<a href=\"" . $author->user_url . "\" target=\"_blank\">" . $author->user_url . "</a><br />\n";
+						}
+						echo $author->description; ?>
+						</div>
+					</div>
+				</div>
+			<?php
 			}
 			
 			// FACULTY
@@ -146,6 +151,7 @@ Template Name: People
 					showBio($faculty[$i]);
 				}			
 				echo "</div>\n\n";
+				echo "<hr>";
 			}
 			
 			// PHD			
@@ -155,7 +161,8 @@ Template Name: People
 				for ($i = 0; $i < $phdCount; $i++) {
 					showBio($phd[$i]);
 				}	
-				echo "</div>\n\n";		
+				echo "</div>\n\n";
+				echo "<hr>";	
 			}
 			
 			// MASTER			
@@ -166,6 +173,7 @@ Template Name: People
 					showBio($master[$i]);
 				}			
 				echo "</div>\n\n";
+				echo "<hr>";
 			}
 
 			// Assistant		
@@ -176,6 +184,7 @@ Template Name: People
 					showBio($assistant[$i]);
 				}			
 				echo "</div>\n\n";
+				echo "<hr>";
 			}
 			
 			// VISITOR
@@ -185,7 +194,8 @@ Template Name: People
 				for ($i = 0; $i < $visitorCount; $i++) {
 					showBio($visitor[$i]);
 				}	
-				echo "</div>\n\n";		
+				echo "</div>\n\n";	
+				echo "<hr>";	
 			}						
 
 			// ALUMNI
