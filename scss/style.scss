@@ -36,6 +36,20 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+.title-bar {
+	.menu-icon::after {
+		background: map-get($foundation-palette, primary);
+		box-shadow: 0 7px 0 map-get($foundation-palette, primary),
+			0 14px 0 map-get($foundation-palette, primary);
+		// box-shadow-color: map-get($foundation-palette, primary);
+	}
+
+	.menu-hamburger {
+		color: map-get($foundation-palette, primary);
+		padding: 0.5rem;
+	}
+}
+
 #main {
 	margin-top: 2.5%;
 }
