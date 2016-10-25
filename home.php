@@ -1,9 +1,19 @@
 <?php get_header(); ?>
 
+<div class="row module">
+	<div class="large-9 columns text--mandy">
+		<h2>Computational &amp; Tangible<br>Interaction Design Laboratory</h2>
+		<p class="lead">The CodeLab at Carnegie Mellon University is a multidisciplinary collaborative formed to address complex issues at the intersection of art, design, architecture, and engineering.</p>
+	</div>
+</div>
+
 <?php if (have_posts()) : ?>
 
-<h2>Recent Projects</h2>
-<div class="row">
+<div class="row module">
+<h2 class="text--mandy columns">
+	<a class="link--arrow" href="<?= bloginfo('home_url'); ?>/projects">Featured Projects</a>
+</h2>
+
 <?php 
 // PROJECTS
 $i = 0;
@@ -17,22 +27,13 @@ foreach ($posts as $post) : setup_postdata($post);
 <?php endforeach; ?>
 </div>
 
-<h2>Recent Work In Progress</h2>
-<div class="row">	
-<?php 
-// Work in progress
-$i = 0;
-$posts = get_posts('category=11&order=DESC&orderby=post_date&numberposts=6');
-foreach ($posts as $post) : setup_postdata($post);
+<?php
+/* No news for now
 
-	get_thumbnail($i); 
-	$i++;
-
-?>
-<?php endforeach; ?>
+<div class="row">
+	<h2 class="columns next">Recent News</h2>
 </div>
 
-<h2 class="next">Recent News</h2>		
 <div class="row">
 <?php 
 // NEWS
@@ -46,7 +47,8 @@ foreach ($posts as $post) : setup_postdata($post);
 ?>
 <?php endforeach; ?>
 </div>
-
+*/
+?>
 
 
 

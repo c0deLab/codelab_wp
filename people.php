@@ -8,7 +8,7 @@ Template Name: People
 
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		<div class="post" id="post-<?php the_ID(); ?>">
-			<h2><?php the_title(); ?></h2>
+			<h2 class="text--mandy"><?php the_title(); ?></h2>
 			<?php the_content(); ?>
 			
 			<?php 
@@ -42,14 +42,6 @@ Template Name: People
 			$visitor = array();
 			$alumni = array();
 			
-			
-			$facultyCount = 0;
-			$phdCount = 0;
-			$masterCount = 0;
-			$assistantCount = 0;
-			$visitorCount = 0;
-			$alumniCount = 0;
-			
 			//Once we have the IDs we loop through them with a Foreach statement.			
 			
 			foreach ( $aUsersID as $iUserID ) :
@@ -63,6 +55,7 @@ Template Name: People
 
 				// Divide the people up into categories				
 				if($lower_yim == "faculty") {
+
 					$facultyCount++;
 					$faculty[] = $curauth;
 				
@@ -70,8 +63,6 @@ Template Name: People
 				
 					$phdCount++;
 					$phd[] = $curauth;
-					
-					//echo $curauth->first_name . ' ';
 					
 				} else if($lower_yim == "master") {
 					$masterCount++;
@@ -88,107 +79,60 @@ Template Name: People
 				} else if($lower_yim == "alumni") {
 					$alumniCount++;
 					$alumni[] = $curauth;
-				
 				}
-				
-				//echo $i . ': ' . $curauth->display_name . ' <br />';
-				//echo $authors[$i] . ' <br />';
-				
-				/*
-				// http://codex.wordpress.org/Author_Templates
-				echo $curauth->aim;
-				echo $curauth->description;
-				echo $curauth->display_name;
-				echo $curauth->first_name;
-				echo $curauth->ID;
-				echo $curauth->jabber;
-				echo $curauth->last_name;
-				echo $curauth->nickname;
-				echo $curauth->user_email;
-				echo $curauth->user_login;
-				echo $curauth->user_nicename;
-				echo $curauth->user_registered;
-				echo $curauth->user_url;
-				echo $curauth->yim;
-				
-				<?php echo get_avatar( $curauth->ID , 80 ); ?>
-				
-				*/
 						
 			endforeach; // end the users loop.
-
 			
 			function showBio($author) { ?>
-				<div class="media-object">
-					<div class="row">
-						<div class="small-4 columns">
-							<?php echo get_avatar( $author->ID, 300 ); ?>
-						</div>
-						<div class="small-8 columns">
-						<?php
-						// Only link to the author page if they have posts
-						$postCount = count_user_posts($author->ID);
-						if($postCount > 0) {
-							echo "<h4><a href=\"" . get_author_link(false, $author->ID, $author->user_nicename) . "\">" . $author->first_name . ' ' . $author->last_name . "</a></h4>\n";
-						} else {
-							echo "<h4>" . $author->first_name . ' ' . $author->last_name . "</h4>\n";
-						}
-						if($author->user_url != "") {
-							echo "<a href=\"" . $author->user_url . "\" target=\"_blank\">" . $author->user_url . "</a><br />\n";
-						}
-						echo $author->description; ?>
-						</div>
-					</div>
+				<div class="small-6 medium-3 large-2 columns">
+					<a class="person" href="<?= get_author_link(false, $author->ID, $author->user_nicename); ?>">
+						<?= get_avatar( $author->ID, 300 ); ?>
+						<h4 class="person__name">
+							<?= $author->first_name . ' ' . $author->last_name; ?>
+						</h4>
+					</a>
 				</div>
 			<?php
 			}
 			
 			// FACULTY
-			if($facultyCount > 0) {
-				echo "<div class=\"people\">\n\n";
-				echo "<h3>Faculty</h3>\n";
-				for ($i = 0; $i < $facultyCount; $i++) {
-					showBio($faculty[$i]);
-				}			
-				echo "</div>\n\n";
-				echo "<hr>";
+			if($facultyCount > 0) { ?>
+				<div class="row" data-people-container>
+				<h3 class="columns">Faculty</h3>
+				<?php foreach ($faculty as $f) showBio($f); ?>
+				</div>
+				<hr><?php
 			}
 			
 			// PHD			
-			if($phdCount > 0) {
-				echo "<div class=\"people\">\n";			
-				echo "<h3>PhD Students</h3>\n";
-				for ($i = 0; $i < $phdCount; $i++) {
-					showBio($phd[$i]);
-				}	
-				echo "</div>\n\n";
-				echo "<hr>";	
+			if($phdCount > 0) { ?>
+				<div class="row" data-people-container>
+				<h3 class="columns">PhD Students</h3>
+				<?php foreach ($phd as $p) showBio($p); ?>
+				</div>
+				<hr><?php	
 			}
 			
 			// MASTER			
-			if($masterCount > 0) {
-				echo "<div class=\"people\">\n";			
-				echo "<h3>Masters Students</h3>\n";
-				for ($i = 0; $i < $masterCount; $i++) {
-					showBio($master[$i]);
-				}			
-				echo "</div>\n\n";
-				echo "<hr>";
+			if($masterCount > 0) { ?>
+				<div class="row" data-people-container>
+				<h3 class="columns">Masters Students</h3>
+				<?php foreach ($master as $m) showBio($m); ?>
+				</div>
+				<hr><?php	
 			}
 
 			// Assistant		
-			if($assistantCount > 0) {
-				echo "<div class=\"people\">\n";			
-				echo "<h3>Lab Manager</h3>\n";
-				for ($i = 0; $i < $assistantCount; $i++) {
-					showBio($assistant[$i]);
-				}			
-				echo "</div>\n\n";
-				echo "<hr>";
+			if ($assistantCount > 0) { ?>
+				<div class="row" data-people-container>
+				<h3 class="columns">Lab Manager</h3>
+				<?php foreach ($assistant as $m) showBio($m); ?>
+				</div>
+				<hr><?php	
 			}
 			
 			// VISITOR
-			if($visitorCount > 0) {
+			/* if($visitorCount > 0) {
 				echo "<div class=\"people\">\n";			
 				echo "<h3>Visitors</h3>\n";
 				for ($i = 0; $i < $visitorCount; $i++) {
@@ -196,16 +140,14 @@ Template Name: People
 				}	
 				echo "</div>\n\n";	
 				echo "<hr>";	
-			}						
+			} */					
 
 			// ALUMNI
-			if($alumniCount > 0) {
-				echo "<div class=\"people\">\n";			
-				echo "<h3>Alumni</h3>\n";
-				for ($i = 0; $i < $alumniCount; $i++) {
-					showBio($alumni[$i]);
-				}	
-				echo "</div>\n\n";		
+			if($alumniCount > 0) { ?>
+				<div class="row" data-people-container>
+				<h3 class="columns">Alumni</h3>
+				<?php foreach ($alumni as $m) showBio($m); ?>
+				</div><?php	
 			}	
 			
 			?>

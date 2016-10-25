@@ -14,19 +14,10 @@ function new_excerpt_length($length) {
 add_filter('excerpt_length', 'new_excerpt_length');
 
 
-function get_thumbnail($i) { ?>
-<div class="large-6 columns imgteaser" data-people="<?= get_the_author(); ?>">
+function get_thumbnail($i, $cols = 3) { ?>
+<div class="large-<?= $cols; ?> columns imgteaser" data-people="<?= get_the_author(); ?>">
 	<a href="<?php the_permalink(); ?>" style="background-image: url(<?php get_the_post_thumbnail_url_changed('thumbnail'); ?>)" class="imgteaser__link">
-	
 		<span class="title"><?php the_title(); ?></span>
-		<span class="excerpt">
-			<strong><?php the_title(); ?></strong>
-			<?php 
-				// Remove the <p> tag so we can be compliant XHTML
-				$excerpt = strip_tags(get_the_excerpt());
-      			echo $excerpt;
-      		?>
-		</span>
 	</a>
 </div>
 <?php

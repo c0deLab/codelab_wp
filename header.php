@@ -32,33 +32,24 @@
 
 <body>
 
-<div class="row column">
-
-<!-- Top Image -->
-<a href="<?php echo home_url(); ?>" rel="home" style="display: block; position: relative;">
-	<img src="<?php echo bloginfo('template_url'); ?>/masthead/header-01.jpg" style="position: absolute; top: 0; left: 0;">
-
-	<img src="<?php echo bloginfo('template_url'); ?>/masthead/header-overlay.png" style="position: relative;">
-</a>
-
-</div>
-
-<!-- Navigation -->
-<div class="row column">
-	<div class="title-bar">
-		<div class="menu-hamburger hide-for-large" data-responsive-toggle="menu-primary-menu">
-			<button class="menu-icon" type="button"></button>
-			<div class="title-bar-title">Menu</div>
+<div class="header title-bar">
+	<div class="row">
+		<div class="columns">
+			<img class="header__logo" src="<?php echo bloginfo('template_url'); ?>/images/logo.svg" width="140" height="140">
+			<div class="row column">
+				<div class="menu-hamburger hide-for-large" data-responsive-toggle="menu-primary-menu">
+					<button class="menu-icon" type="button"></button>
+					<div class="title-bar-title">Menu</div>
+				</div>
+			</div>
+			<?php wp_nav_menu(array(
+				'menu_class' => 'menu'
+			)); ?>
 		</div>
-		<?php wp_nav_menu(array(
-			'menu_class' => 'menu vertical large-horizontal'
-		)); ?>
 	</div>
-</div><!-- .row -->
+</div>
 
 <div class="row">
 
-<?php // var_dump($wp_query); ?>
-
 <!-- Main Column -->
-<div class="medium-8 columns" id="main">
+<div class="columns" id="main">

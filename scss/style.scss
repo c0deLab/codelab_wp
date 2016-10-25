@@ -3,27 +3,55 @@
 @include foundation-everything;
 @import "overrides";
 
-h1, h2, h3, h4, h5, h6 {
+$mandy: #E44762;
 
+.text {}
+.text--mandy { color: $mandy; }
+
+h1, h2, h3, h4, h5, h6 {
+	color: $mandy;
+	line-height: 1.2;
 }
 
-.menu {
-	@media screen and (max-width: map-get($breakpoints, large)) {
-		display: none;
+.header {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	position: relative;
+}
+
+	.header__logo {
+		position: absolute;
+		bottom: -70px;
 	}
 
+.menu {
+	// small screens
+	@media screen and (max-width: map-get($breakpoints, large)) {
+		display: none;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+
+		li {
+			display: block;
+		}
+	}
+
+	// large screens
 	@media screen and (min-width: map-get($breakpoints, large)) {
 		display: block !important;
+		float: right;
+
+		li {
+			display: inline-block;
+		}
 	}
 
 	li {
-		font-weight: bold;
-		text-transform: uppercase;
+		font-weight: 400;
+		text-transform: lowercase;
 
 		@media screen and (max-width: map-get($breakpoints, large)) {
-			&:first-child {
-				margin-top: 0.5em;
-			}
+			
 		}
 	}
 
@@ -47,15 +75,38 @@ h1, h2, h3, h4, h5, h6 {
 	.menu-hamburger {
 		color: map-get($foundation-palette, primary);
 		padding: 0.5rem;
+
+		@media screen and (max-width: map-get($breakpoints, large)) {
+			float: right;
+		}
 	}
 }
 
 #main {
-	margin-top: 2.5%;
+	margin-top: 140px;
+	margin-top: calc(70px + 7.5%);
 }
 
-#sidebar {
-	margin-top: calc(2.5% + 60px);
+.module {
+	@extend .normalize;
+	margin-bottom: 7.5%;
+	&:last-child { margin-bottom: 0; }
+}
+
+.link--arrow {
+	&:after {
+		border: 0.06em solid $mandy;
+		border-radius: 1em;
+		content: ">";
+		display: inline-block;
+		height: 1.15em;
+		position: relative;
+		text-align: center;
+		line-height: 1.05;
+		font-size: 0.9em;
+		width: 1.15em;
+		margin-left: 0.5em;
+	}
 }
 
 img.centered{display: block;margin-left: auto;margin-right: auto;}
@@ -81,46 +132,57 @@ img.alignleft{padding: 4px;margin: 3px 10px 2px 0;display: inline;}
 	display: block;
 	background-size: cover;
 	background-position: center center;
-	margin-bottom: 1em;
+	overflow: hidden;
+	margin-bottom: map-get($grid-column-gutter, medium);
+
+	@media screen and (max-width: map-get($breakpoints, large)) {
+		margin-bottom: 0.5 * map-get($grid-column-gutter, medium);
+	}
 }
 
-.imgteaser a .title {
+.imgteaser .title {
+	box-sizing: border-box;
+	bottom: 0;
 	font-weight: bold;
 	position: absolute;
 	left: 0px;
-	box-sizing: border-box;
-	bottom: 0px;
 	font-size: 1.1em;
 	color: #fff;
 	background: #000;
 	padding: 5px 10px;
-	opacity: 0.65;
+	opacity: 0;
 	width: 100%;
+
+	transition: 0.15s;
+	transform: translateY(100%);
+
+	// always show on smaller screens
+	@media screen and (max-width: map-get($breakpoints, large)) {
+		opacity: 0.65 !important;
+		transform: translateY(0) !important;
+	}
 }
 
-.imgteaser a:hover .excerpt{
-	display: block;
-	background: #111;
-	box-sizing: border-box;
-	opacity: 0.75;
-	color: #fff;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	padding: 10px;
-	margin: 0px;
-	width: 100%;
-	height: 100%;
-	overflow-y: scroll;
+.imgteaser a:hover .title {
+	opacity: 0.65;
+	transform: translateY(0);
 }
+
 .imgteaser a:hover .excerpt strong {
 	display: block;
 	margin-bottom: 5px;
 	font-size: 1.1em;
 }
 
-.imgteaser a .excerpt {	display: none; }
-.imgteaser a:hover .title { visibility: hidden;}
+.person {
+	display: block;
+	padding-bottom: 0.5em;
+
+	.person__name {
+		margin-top: 0.5em;
+		margin-bottom: 0;
+	}
+}
 
 #footer {
 	margin-bottom: 1em;

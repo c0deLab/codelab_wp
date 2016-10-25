@@ -1,22 +1,11 @@
 </div>
 <!-- End Main -->
 
-
-<!-- Sidebar -->
-<?php 
-	
-	// Don't show the sidebar with attachments
-	if(!is_attachment()){
-		include (TEMPLATEPATH . '/sidebar.php'); 
-	}
-	
-?>
-
 </div><!-- .row -->
 
 
 <!-- Footer -->
-<div id="footer" class="row">
+<div id="footer" class="columns">
 	<hr>
 	<p class="subheader text-center">
 		All content &copy; <?php echo date("Y"); ?> by <?php bloginfo('name'); ?>, School of Architecture, <a href="http://www.cmu.edu">Carnegie Mellon University</a>

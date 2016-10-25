@@ -2,7 +2,6 @@ jQuery(document).ready(function($) {
 
 	// nav menu
 	$('[data-responsive-toggle]').click(function() {
-		console.log($('#' + $(this).attr('data-responsive-toggle')));
 		$('#' + $(this).attr('data-responsive-toggle')).toggle();
 	});
 
@@ -38,4 +37,17 @@ jQuery(document).ready(function($) {
 			});
 		}
 	});
+
+	// people same height
+	function peopleSameHeight() {
+		$('[data-people-container]').each(function() {
+			var height = 0;
+			$(this).find('.person').height('auto').each(function() {
+				if ($(this).height() > height) {
+					height = $(this).height();
+				}
+			}).height(height);
+		});
+	}
+	$(window).on('load resize', peopleSameHeight);
 });
