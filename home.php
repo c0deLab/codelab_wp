@@ -11,7 +11,7 @@
 
 <div class="row module">
 <h2 class="text--mandy columns">
-	<a class="link--arrow" href="<?= bloginfo('home_url'); ?>/projects">Featured Projects</a>
+	<a class="link--arrow" href="<?= home_url(); ?>/projects">Featured Projects</a>
 </h2>
 
 <?php 
