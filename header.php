@@ -35,7 +35,9 @@
 <div class="header title-bar">
 	<div class="row">
 		<div class="columns">
-			<img class="header__logo" src="<?php echo bloginfo('template_url'); ?>/images/logo.svg" width="140" height="140">
+			<a href="<?php echo home_url(); ?>" rel="home">
+				<img class="header__logo" src="<?php echo bloginfo('template_url'); ?>/images/logo.svg" width="140" height="140">
+			</a>
 			<div class="row column">
 				<div class="menu-hamburger hide-for-large" data-responsive-toggle="menu-primary-menu">
 					<button class="menu-icon" type="button"></button>
