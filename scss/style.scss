@@ -62,6 +62,49 @@ h1, h2, h3, h4, h5, h6 {
 			color: $white;
 		}
 	}
+
+	.sub-menu {
+		background: $topbar-background;
+		display: none;
+		width: 280px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		margin: 0;
+
+		li {
+			display: block;
+		}
+
+		a {
+			display: block;
+			line-height: 1.2;
+			padding: $menu-item-padding;
+		}
+
+		@media screen and (max-width: map-get($breakpoints, large)) {
+			background: transparent;
+			display: block;
+			position: relative;
+			width: 100%;
+
+			a {
+				&:before {
+					content: "- ";
+				}
+			}
+		}
+	}
+
+	.menu-item {
+		position: relative;
+
+		&:hover {
+			.sub-menu {
+				display: block;
+			}
+		}
+	}
 }
 
 .title-bar {
