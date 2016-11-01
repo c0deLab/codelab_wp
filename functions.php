@@ -8,14 +8,12 @@ add_theme_support( 'post-thumbnails' );
 
 
 // Set the length of the excerpt text to display on images
-function new_excerpt_length($length) {
-	return 50;
-}
+function new_excerpt_length($length) { return 50; }
 add_filter('excerpt_length', 'new_excerpt_length');
 
 
-function get_thumbnail($i, $cols = 3) { ?>
-<div class="large-<?= $cols; ?> columns imgteaser" data-people="<?= get_the_author(); ?>">
+function get_thumbnail($i, $cols_large = 3, $cols_medium = 6) { ?>
+<div class="large-<?= $cols_large; ?> medium-<?= $cols_medium; ?> columns imgteaser" data-people="<?= get_the_author(); ?>">
 	<a href="<?php the_permalink(); ?>" style="background-image: url(<?php get_the_post_thumbnail_url_changed('thumbnail'); ?>)" class="imgteaser__link">
 		<span class="title"><?php the_title(); ?></span>
 	</a>
@@ -24,10 +22,13 @@ function get_thumbnail($i, $cols = 3) { ?>
 }
 
 /* Get the url from the post thumbnail */
-function get_the_post_thumbnail_url_changed($size=thumbnail) {
+function get_the_post_thumbnail_url_changed($size='thumbnail') {
+
+  global $post;
 
 	// This is faster perhaps?
-	$thumbnail_id=get_the_post_thumbnail($post->ID, $size);
+	$thumbnail_id = get_the_post_thumbnail($post->ID);
+  // echo $thumbnail_id;
 	preg_match ('/src="(.*)" class/', $thumbnail_id, $link);
 	echo $link[1];
 	

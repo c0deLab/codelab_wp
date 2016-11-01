@@ -17,14 +17,21 @@
 <?php 
 // PROJECTS
 $i = 0;
-$posts = get_posts('category=4&order=DESC&orderby=post_date&numberposts=6');
-foreach ($posts as $post) : setup_postdata($post);
+$the_query = new WP_Query(array(
+	'category_name' => 'projects',
+	'posts_per_page' => 8
+));
+// $posts = get_posts('category=4&order=DESC&orderby=post_date&numberposts=8');
+if ($the_query->have_posts()) :
+while ($the_query->have_posts()) :
+$the_query->the_post();
 
 	get_thumbnail($i); 
 	$i++;
 
+endwhile; endif;
+wp_reset_postdata();
 ?>
-<?php endforeach; ?>
 </div>
 
 <?php
