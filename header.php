@@ -7,7 +7,7 @@
 
 <!-- Styles  -->
 <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,700" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css" type="text/css">
+<link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/style.css?v=20161101_1233" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo bloginfo('template_url'); ?>/images/favicon.png">
