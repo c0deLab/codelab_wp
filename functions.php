@@ -1,5 +1,8 @@
 <?php
 
+include_once('acf/acf.php');
+include_once('custom-fields.php');
+
 wp_enqueue_script('jquery');
 
 add_theme_support( 'post-thumbnails' );
