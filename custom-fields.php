@@ -13,6 +13,7 @@ if(function_exists("register_field_group"))
 				'choices' => array (
 					'faculty' => 'Faculty',
 					'student' => 'Student',
+					'alumni' => 'Alumni'
 				),
 				'default_value' => '',
 				'allow_null' => 0,
@@ -39,6 +40,7 @@ if(function_exists("register_field_group"))
 				'choices' => array (
 					'mscd' => 'MSCD',
 					'mtid' => 'MTID',
+					'em2' => 'EM2',
 					'hci' => 'HCI',
 				),
 				'default_value' => '',
