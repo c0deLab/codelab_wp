@@ -219,7 +219,7 @@ img.alignleft{padding: 4px;margin: 3px 10px 2px 0;display: inline;}
 
 .person {
 	display: block;
-	padding-bottom: 0.5em;
+	padding-bottom: 1em;
 
 	.person__name {
 		margin-top: 0.5em;
@@ -229,4 +229,8 @@ img.alignleft{padding: 4px;margin: 3px 10px 2px 0;display: inline;}
 
 #footer {
 	margin-bottom: 1em;
+}
+
+.text--size20 {
+	font-size: 20px;
 }

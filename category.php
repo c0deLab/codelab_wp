@@ -28,7 +28,7 @@ sort($people, SORT_NATURAL | SORT_FLAG_CASE);
 	<p>View by people:</p>
 	<div class="row">
 		<div class="medium-6 columns">
-			<select class="inline" id="people-select">
+			<select class="inline" data-select="people">
 				<option value="">VIEW ALL</option>
 				<option value="" disabled>-----</option>
 				<?php foreach ($people as $person) { ?>

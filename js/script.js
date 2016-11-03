@@ -5,37 +5,42 @@ jQuery(document).ready(function($) {
 		$('#' + $(this).attr('data-responsive-toggle')).toggle();
 	});
 
-	// projects filtering
-	var select = $('#people-select'),
-		people = $('[data-people]'),
+	// projects/people filtering
+	var select = $('[data-select]'),
 		speed = 400;
 
 	select.on('change', function() {
 
-		var value = this.value;
+		var _this = this,
+			value = this.value,
+			selector = 'data-' + this.getAttribute('data-select'),
+			target = $('[' + selector + ']');
 
-		if ( !value ) {
+		// clear others
+		select.filter(function() { return this.getAttribute('data-select') != _this.getAttribute('data-select'); }).val('');
 
-			people.show();
+		if ( !value ) return target.show();
 
-		} else {
+		target.filter(function() {
 
-			people.filter(function() {
+			var $this = $(this),
+				test = $this.attr(selector);
 
-				var $this = $(this);
+			if (!test) $this.fadeOut(speed);
 
-				if ( $this.attr('data-people') === value ) {
+			if ( test === value || test.split('|').indexOf(value) > -1 ) {
 
-					setTimeout(function() {
-						$this.fadeIn(speed);
-					}, speed);
+				setTimeout(function() {
+					$this.fadeIn(speed);
+				}, speed);
 
-				} else {
+			} else {
 
-					$this.fadeOut(speed);
-				}
-			});
-		}
+				$this.fadeOut(speed);
+			}
+		});
+
+		setTimeout(peopleSameHeight, speed);
 	});
 
 	// people same height
@@ -43,11 +48,14 @@ jQuery(document).ready(function($) {
 		$('[data-people-container]').each(function() {
 			var height = 0;
 			$(this).find('.person').height('auto').each(function() {
-				if ($(this).height() > height) {
-					height = $(this).height();
+				var $this = $(this);
+				if ($this.is(':visible') && $this.height() > height) {
+					height = $this.height();
 				}
 			}).height(height);
 		});
 	}
+	peopleSameHeight();
+	$(document).ready(peopleSameHeight);
 	$(window).on('load resize', peopleSameHeight);
 });
