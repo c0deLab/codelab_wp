@@ -3,7 +3,7 @@
 <div class="row module">
 	<div class="large-9 columns text--mandy">
 		<h2>Computational &amp; Tangible<br>Interaction Design Laboratory</h2>
-		<p class="lead">The CodeLab at Carnegie Mellon University is a multidisciplinary collaborative formed to address complex issues at the intersection of art, design, architecture, and engineering.</p>
+		<p class="lead">The Code Lab at Carnegie Mellon University is a multidisciplinary collaborative formed to address complex issues at the intersection of art, design, architecture, and engineering.</p>
 	</div>
 </div>
 
