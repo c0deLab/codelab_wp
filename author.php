@@ -14,7 +14,11 @@ endif;
 
 <div class="row module">
 	<div class="small-4 columns">
-		<?php echo get_avatar( $curauth->ID, 300 ); ?>
+		<?php if ( get_field('photo', 'user_' . $author->ID) ) { ?>
+		<img src="<?php the_field('photo', 'user_' . $author->ID); ?>" alt="<?= $name; ?>">
+		<?php } else { ?>
+		<img src="<?php echo home_url() . '/wp-content/uploads/2016/11/default.jpg'; ?>" alt="<?= $name; ?>">
+		<?php } ?>
 	</div>
 	<div class="small-8 columns">
 	<?php
