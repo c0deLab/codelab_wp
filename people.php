@@ -17,6 +17,29 @@ if ( !empty( $user_query->results ) ) {
 		if ( intval($year) > 0 && !in_array($year, $years) ) {
 			$years[] = $year;
 		}
+		// var_dump($user);
+		$name = $user->first_name . ' ' . $user->last_name;
+		$name = strtolower($name);
+		$name = str_replace("'", "", $name);
+		$name = str_replace(".", "", $name);
+		$name = str_replace(" ", "", $name);
+		$name = str_replace(",", "", $name);
+		$name = str_replace("-", "", $name);
+		
+		if ( !get_field('photo', 'user_' . $user->ID) ) {
+			$id = wp_insert_post(array(
+				'post_title' => $name,
+				'post_name' => $name,
+				'post_status' => 'publish',
+				'post_type' => 'attachment', 
+				'guid' => 'http://localhost/codelab/wp-content/uploads/2016/11/' . $name . '.jpg',
+				'post_mime_type' => 'image/jpeg'
+			));
+			// update_field('photo', $id, 'user_' . $user->ID);
+			update_user_meta($user->ID, 'photo', $id);
+			update_user_meta($user->ID, '_photo', 'field_582b3ce39f7c4');
+			update_post_meta(get_field('photo', 'user_' . $user->ID), '_wp_attached_file', '2016/11/' . $name . '.jpg');
+		}
 	}
 }
 asort($years);
@@ -63,6 +86,7 @@ asort($years);
 	
 	<?php 
 	function showBio($author) { 
+		$name = $author->first_name . ' ' . $author->last_name;
 		$link = get_author_link(false, $author->ID, $author->user_nicename);
 		$program = join('|', get_field('program', 'user_' . $author->ID));
 		$year = get_field('graduation_year', 'user_' . $author->ID);
@@ -71,9 +95,9 @@ asort($years);
 		?>
 		<div class="small-6 medium-3 large-2 columns">
 			<a class="person" href="<?= $link; ?>" data-program="<?= $program; ?>" data-year="<?= $year; ?>" data-role="<?= $role; ?>">
-				<?= get_avatar( $author->ID, 300 ); ?>
+				<img src="<?php the_field('photo', 'user_' . $author->ID); ?>" alt="<?= $name; ?>">
 				<h4 class="person__name text text--size20">
-					<?= $author->first_name . ' ' . $author->last_name; ?>
+					<?= $name; ?>
 				</h4>
 			</a>
 		</div>

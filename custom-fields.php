@@ -47,6 +47,15 @@ if(function_exists("register_field_group"))
 				'allow_null' => 0,
 				'multiple' => 1,
 			),
+			array (
+				'key' => 'field_582b3ce39f7c4',
+				'label' => 'Photo',
+				'name' => 'photo',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'full',
+				'library' => 'all',
+			),
 		),
 		'location' => array (
 			array (
