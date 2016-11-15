@@ -14,8 +14,8 @@ endif;
 
 <div class="row module">
 	<div class="small-4 columns">
-		<?php if ( get_field('photo', 'user_' . $author->ID) ) { ?>
-		<img src="<?php the_field('photo', 'user_' . $author->ID); ?>" alt="<?= $name; ?>">
+		<?php if ( get_field('photo', 'user_' . $curauth->ID) ) { ?>
+		<img src="<?php the_field('photo', 'user_' . $curauth->ID); ?>" alt="<?= $name; ?>">
 		<?php } else { ?>
 		<img src="<?php echo home_url() . '/wp-content/uploads/2016/11/default.jpg'; ?>" alt="<?= $name; ?>">
 		<?php } ?>
