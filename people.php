@@ -72,7 +72,11 @@ asort($years);
 		?>
 		<div class="small-6 medium-3 large-2 columns">
 			<a class="person" href="<?= $link; ?>" data-program="<?= $program; ?>" data-year="<?= $year; ?>" data-role="<?= $role; ?>">
+				<?php if ( the_field('photo', 'user_' . $author->ID) ) { ?>
 				<img src="<?php the_field('photo', 'user_' . $author->ID); ?>" alt="<?= $name; ?>">
+				<?php } else { ?>
+				<img src="<?php echo home_url() . '/wp-content/uploads/2016/11/default.jpg'; ?>" alt="<?= $name; ?>">
+				<?php } ?>
 				<h4 class="person__name text text--size20">
 					<?= $name; ?>
 				</h4>
