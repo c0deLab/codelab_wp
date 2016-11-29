@@ -7,7 +7,7 @@
 <?php the_date('F Y'); ?><br>
 Author: <a href="<?php echo get_author_link(false, $authordata->ID, $authordata->user_nicename) ?>"> <?php the_author_meta('first_name'); echo ' '; the_author_meta('last_name'); ?></a>
 <?php if (get_field('program', 'user_' . $authordata->ID)) {
-	echo ', ' . get_field('program', 'user_' . $authordata->ID);
+	echo ', ' . strtoupper(get_field('program', 'user_' . $authordata->ID)[0]);
 	if (get_field('graduation_year', 'user_' . $authordata->ID)) {
 		echo ' ' . get_field('graduation_year', 'user_' . $authordata->ID);
 	}
