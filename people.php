@@ -39,6 +39,8 @@ asort($years);
 				<option value="alumni">Alumni</option>
 			</select>
 		</div>
+		<?php
+		/*
 		<div class="medium-4 columns">
 			<p>Programs:</p>
 			<select class="inline" data-select="program">
@@ -59,6 +61,8 @@ asort($years);
 				<?php } ?>
 			</select>
 		</div>
+		*/
+		?>
 	</div>
 	
 	<?php 
