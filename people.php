@@ -67,6 +67,10 @@ asort($years);
 	
 	<?php 
 	function showBio($author) { 
+		
+		$active = get_field('active', 'user_' . $author->ID);
+		if (!$active || $active == 'No') return;
+		
 		$name = $author->first_name . ' ' . $author->last_name;
 		$link = get_author_link(false, $author->ID, $author->user_nicename);
 		$program = join('|', get_field('program', 'user_' . $author->ID));
