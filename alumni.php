@@ -1,7 +1,7 @@
 
 <?php
 /*
-Template Name: People
+Template Name: Alumni
 */
 get_header(); 
 the_post();
