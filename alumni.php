@@ -81,7 +81,7 @@ asort($years);
 				<?php if ( get_field('photo', 'user_' . $author->ID) ) { ?>
 				<img src="<?php the_field('photo', 'user_' . $author->ID); ?>" alt="<?= $name; ?>">
 				<?php } else { ?>
-				<img src="<?php echo home_url() . '/wp-content/uploads/2016/11/default.jpg'; ?>" alt="<?= $name; ?>">
+				<img src="http://code.arc.cmu.edu/wp/wp-content/uploads/2018/08/default.png" alt="<?= $name; ?>">
 				<?php } ?>
 				<h4 class="person__name text text--size20">
 					<?= $name; ?>
